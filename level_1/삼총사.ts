@@ -16,7 +16,9 @@ function* combinationGenerator(
 
 function* trioGenerator(numbers: number[], n: number): Generator<number[]> {
     for (const comb of combinationGenerator(numbers, n)) {
-        if (comb.reduce((acc, cur) => acc + cur, 0) === 0) {
+        let sum = 0;
+        comb.forEach((num) => sum += num);
+        if (sum === 0) {
             yield comb;
         }
     }
